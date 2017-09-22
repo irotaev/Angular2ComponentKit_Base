@@ -1,1 +1,1 @@
-export {StaticComponentsModule} from './src/static-components.module';
+export {ComponentBaseModule} from './src/component-base.module';

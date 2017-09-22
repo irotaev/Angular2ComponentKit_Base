@@ -1,5 +1,5 @@
 {
-  "name": "angular2components_static",
+  "name": "angular2componentkit_base",
   "version": "1.0.0",
   "description": "Additional Angular 2 (or higher) components. Static components like covers, paragraphs eth",
   "main": "index.js",

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoverComponentN1Component } from './cover-component-n1/cover-component-n1.component';
+import { CoverComponentN1Component } from './cover-component/cover-component.component';
 
 @NgModule({
   imports: [
@@ -11,4 +11,4 @@ import { CoverComponentN1Component } from './cover-component-n1/cover-component-
   ],
   declarations: [CoverComponentN1Component]
 })
-export class StaticComponentsModule { }
+export class ComponentBaseModule { }
