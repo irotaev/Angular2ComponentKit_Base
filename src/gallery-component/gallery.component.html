@@ -19,17 +19,8 @@
             </div>
         </div>
 
-        <!--<div *ngFor="let url of imgNames; let last = last;" class="img-wrapper">-->
-        <!--<img src="/img/portfolio/{{url}}" [class.last]="last" />-->
-        <!--</div>-->
-
-        <!--<masonry [options]="{gutter: 20, fitWidth: true}">-->
-        <!--<masonry-brick class="brick" *ngFor="let photo of canvas.photos">-->
-        <!--<img src="/img/portfolio/{{photo.src}}" [style.width.px]="photo.width" [style.height.px]="photo.height"/>-->
-        <!--</masonry-brick>-->
-        <!--</masonry>-->
         <div class="more-btn-wrapper" id="gallery-more-btn-wrapper">
-            <button md-raised-button (click)="moreBtnClick()">Primary</button>
+            <button md-raised-button class="button more-photo background-color_grey_light" (click)="moreBtnClick()">Еще фотографии</button>
         </div>
     </div>
 </sck-wrapper>

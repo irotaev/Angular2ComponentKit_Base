@@ -36,14 +36,14 @@ export class Canvas {
     }
 
     private getColumnGap(): number {
-        return (this.width - this._baseColumnCount * this.baseColumnWidth) / (this._baseColumnCount - 1);
+        return (this.width - this._baseColumnCount * this.baseColumnWidth) / (this._baseColumnCount - 1 + 2);
     }
 
     private insertPhoto(photo: Photo): Photo {
         const minIndex = this.getMinHeightColumnIndex();
         const prevColumnCount = minIndex + 1 - 1;
 
-        photo.x = (prevColumnCount) * this.baseColumnWidth + prevColumnCount * this._columnGap;
+        photo.x = (prevColumnCount) * this.baseColumnWidth + prevColumnCount * this._columnGap + this._columnGap;
         photo.y = this._lastRowHeights[minIndex] + this._columnGap;
 
         this._lastRowHeights[minIndex] = photo.y + photo.height;

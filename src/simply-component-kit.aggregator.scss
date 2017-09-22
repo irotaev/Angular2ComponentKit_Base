@@ -9,6 +9,10 @@
   @include font-color($color-key);
 }
 
+@each $color-key in map_keys($colors) {
+  @include background-color($color-key);
+}
+
 @each $sizes in map_values($font-sizes) {
   @include font-size($sizes);
 }

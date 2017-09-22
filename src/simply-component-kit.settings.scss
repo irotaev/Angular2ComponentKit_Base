@@ -25,12 +25,16 @@ $grid-row: $grid-y*4;
 //#region Colors
 $colors: (
         'black': hsl(0,0,0),
+        'grey_normal': hsl(0,0,50),
+        'grey_light': hsl(0,0,90),
+        'grey_light2': hsl(0,0,98),
         'white': hsl(0,100,100)
 );
 //#endregion
 
 //#region Fonts
 $font-sizes: (
+  '13px': (13px, 13px, 12px, 12px, 10px, 10px)
 );
 
 $font-weights: (
@@ -44,8 +48,16 @@ $letter-spacings: (
         'large': 3px
 );
 
-@mixin font-size($sizes) {
-  .font-size_#{nth($sizes, 1)} {
+@mixin font-size($sizes, $self: false) {
+  $selector: '';
+  @if ($self == true) {
+    $selector: '&';
+  }
+  @else {
+    $selector: '.font-size_#{nth($sizes, 1)}';
+  }
+
+  #{$selector} {
 
     $resolution: null;
     @for $i from 1 through length($sizes) {
@@ -90,6 +102,12 @@ $letter-spacings: (
 @mixin font-color($color-name) {
   .color_#{$color-name} {
     color: map_get($colors, $color-name);
+  }
+}
+
+@mixin background-color($color-name) {
+  .background-color_#{$color-name} {
+    background-color: map_get($colors, $color-name);
   }
 }
 //#endregion
