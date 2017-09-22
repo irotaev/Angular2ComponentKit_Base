@@ -3,7 +3,7 @@ import {Canvas} from './Canva';
 import {Photo} from './Photo';
 
 @Component({
-  selector: 'app-gallery',
+  selector: 'sck-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })

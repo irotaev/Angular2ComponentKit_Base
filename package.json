@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/irotaev/Angular2Components_Static#readme",
   "dependencies": {
+    "@angular/cdk": "^2.0.0-beta.11",
+    "@angular/material": "^2.0.0-beta.11",
     "lodash": "^4.17.4"
   }
 }

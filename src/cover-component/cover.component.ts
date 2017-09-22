@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AbstractComponent} from '../abstract.component';
 
 @Component({
-  selector: 'app-cover-component',
+  selector: 'sck-cover',
   templateUrl: './cover.component.html',
   styleUrls: ['./cover.component.scss']
 })

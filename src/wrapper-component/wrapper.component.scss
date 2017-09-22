@@ -1,6 +1,6 @@
 @import "../simply-component-kit.settings";
 
-:host(app-wrapper) {
+:host(sck-wrapper) {
   display: block;
   margin-top: $grid-row;
 }

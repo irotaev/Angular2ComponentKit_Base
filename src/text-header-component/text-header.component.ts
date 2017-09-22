@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AbstractComponent} from '../abstract.component';
 
 @Component({
-  selector: 'app-text-header',
+  selector: 'sck-text-header',
   templateUrl: './text-header.component.html',
   styleUrls: ['./text-header.component.scss']
 })

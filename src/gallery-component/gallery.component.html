@@ -1,4 +1,4 @@
-<app-wrapper>
+<sck-wrapper>
     <div class="wrapper" [style.width.px]="canvas.width" [style.height.px]="canvas.height">
         <div *ngFor="let photo of canvas.photos"
              [style.width.px]="photo.width"
@@ -29,7 +29,7 @@
         <!--</masonry-brick>-->
         <!--</masonry>-->
         <div class="more-btn-wrapper" id="gallery-more-btn-wrapper">
-            <a class="more-btn" href="#" (click)="moreBtnClick()">Показать еще</a>
+            <button md-raised-button (click)="moreBtnClick()">Primary</button>
         </div>
     </div>
-</app-wrapper>
+</sck-wrapper>
