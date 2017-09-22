@@ -1,0 +1,21 @@
+@import "simply-component-kit.settings";
+
+@import "wrapper/settings";
+@import "cover/settings";
+@import "text-header/settings";
+
+@each $color-key in map_keys($colors) {
+  @include font-color($color-key);
+}
+
+@each $sizes in map_values($font-sizes) {
+  @include font-size($sizes);
+}
+
+@each $spacing-key in map_keys($letter-spacings) {
+  @include letter-spacing($spacing-key);
+}
+
+@each $weight-key in map_keys($font-weights) {
+  @include font-weight($weight-key);
+}

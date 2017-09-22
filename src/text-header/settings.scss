@@ -1,0 +1,7 @@
+@import "../simply-component-kit.settings";
+
+$font-sizes: map_merge_distinct(
+                $font-sizes,
+                (36px: (36px, 32px, 32px, 28px, 28px, 28px),
+                 20px: (20px, 20px, 18px, 18px, 16px, 16px))
+);
