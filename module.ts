@@ -1,1 +1,1 @@
-export {ComponentBaseModule} from './src/component-base.module';
+export {SimplyComponentKitModule} from './src/simply-component-kit.module';

@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-cover-component',
-  templateUrl: './cover-component.component.html',
-  styleUrls: ['./cover-component.component.scss']
+  templateUrl: './cover.component.html',
+  styleUrls: ['./cover.component.scss']
 })
-export class CoverComponentN1Component implements OnInit {
+export class CoverComponent implements OnInit {
 
   @Input() bgImgUrl: string;
   @Input() textH4: string;
