@@ -1,8 +1,9 @@
 @import "simply-component-kit.settings";
 
-@import "wrapper/settings";
-@import "cover/settings";
-@import "text-header/settings";
+@import "wrapper-component/settings";
+@import "cover-component/settings";
+@import "text-header-component/settings";
+@import "gallery-component/settings";
 
 @each $color-key in map_keys($colors) {
   @include font-color($color-key);
