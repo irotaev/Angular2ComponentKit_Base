@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit} from '@angular/core';
 import {Canvas} from './Canva';
 import {Photo} from './Photo';
 
@@ -15,6 +15,8 @@ export class GalleryComponent implements OnInit {
 
   @Input() imgLocation: string;
   @Input() imgNames: Array<string>;
+  @Input() buttonText: string = "Еще фотографии"
+  @Input() buttonText_imgsEnd: string;
   constructor(private _elementRef: ElementRef) {
   }
 
@@ -42,7 +44,13 @@ export class GalleryComponent implements OnInit {
     img.src = window.location.origin + '/assets/' + this.imgLocation + '/' + photo.src;
   }
 
-  public moreBtnClick() {
+  public moreBtnClick(event) {
+    if (this._lastInsertedPhotoIndex >= this.imgNames.length) {
+      this.buttonText = this.buttonText_imgsEnd;
+
+      return false;
+    }
+
     this.imgNames.slice(this._lastInsertedPhotoIndex, this._lastInsertedPhotoIndex + 5).forEach((name) => {
       const photo = new Photo(0, 0, name);
       this.loadImg(photo, (_photo: Photo) => {

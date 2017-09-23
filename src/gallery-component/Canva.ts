@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 export class Canvas {
     public baseColumnWidth = 300;
-    public minImgGap = 20;
 
     public readonly photos: Array<Photo> = [];
 

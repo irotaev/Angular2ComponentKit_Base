@@ -19,8 +19,8 @@
             </div>
         </div>
 
-        <div class="more-btn-wrapper" id="gallery-more-btn-wrapper">
-            <button md-raised-button class="button more-photo background-color_grey_light" (click)="moreBtnClick()">Еще фотографии</button>
+        <div class="more-btn-wrapper">
+            <button md-raised-button class="button" (click)="moreBtnClick($event)">{{buttonText}}</button>
         </div>
     </div>
 </sck-wrapper>
