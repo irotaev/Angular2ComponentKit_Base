@@ -1,13 +1,15 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Canvas} from './Canva';
 import {Photo} from './Photo';
+import {AbstractComponent} from '../abstract.component';
+import {ModalComponent} from '../modal-component/modal.component';
 
 @Component({
   selector: 'sck-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent extends AbstractComponent implements OnInit {
 
   public canvas: Canvas;
 
@@ -17,7 +19,8 @@ export class GalleryComponent implements OnInit {
   @Input() imgNames: Array<string>;
   @Input() buttonText: string = "Еще фотографии"
   @Input() buttonText_imgsEnd: string;
-  constructor(private _elementRef: ElementRef) {
+  constructor(private _elementRef: ElementRef, private vcRef: ViewContainerRef, private cfResolver: ComponentFactoryResolver) {
+    super();
   }
 
   ngOnInit() {
@@ -60,5 +63,14 @@ export class GalleryComponent implements OnInit {
     this._lastInsertedPhotoIndex += 5;
 
     return false;
+  }
+
+  public imgClick() {
+    const modalFactory = this.cfResolver.resolveComponentFactory(ModalComponent);
+    // let modalComponentRef = modalFactory.create(this.vcRef.injector);
+    // modalComponentRef.changeDetectorRef.detectChanges();
+
+    var modalComponent = this.vcRef.createComponent(modalFactory, this.vcRef.length, null);
+    modalComponent.instance.selfComponent = modalComponent;
   }
 }

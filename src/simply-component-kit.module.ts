@@ -7,6 +7,7 @@ import { CoverComponent } from './cover-component/cover.component';
 import { HeaderTextComponent } from './text-header-component/text-header.component';
 import { WrapperComponent } from './wrapper-component/wrapper.component';
 import { GalleryComponent } from './gallery-component/gallery.component';
+import { ModalComponent } from './modal-component/modal.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { GalleryComponent } from './gallery-component/gallery.component';
     HeaderTextComponent,
     GalleryComponent
   ],
-  declarations: [CoverComponent, HeaderTextComponent, WrapperComponent, GalleryComponent]
+  declarations: [CoverComponent, HeaderTextComponent, WrapperComponent, GalleryComponent, ModalComponent],
+  entryComponents: [ModalComponent]
 })
 export class SimplyComponentKitModule { }
