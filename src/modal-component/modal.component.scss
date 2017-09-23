@@ -11,8 +11,17 @@
   display: block;
 }
 
-.icon-close {
+.button-close {
   position: absolute;
-  right: $grid-column;
-  top: $grid-row;
+  right: $grid-column/2;
+  top: $grid-row/2;
+}
+
+.content-wrapper {
+  position: absolute;
+  box-sizing: border-box;
+  top: $grid-column*2;
+  bottom: $grid-column*2;
+  left: $grid-column*2;
+  right: $grid-column*2;
 }

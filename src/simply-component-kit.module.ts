@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {MdButtonModule} from '@angular/material';
+import {MdIconModule} from '@angular/material';
 
 import { CoverComponent } from './cover-component/cover.component';
 import { HeaderTextComponent } from './text-header-component/text-header.component';
@@ -12,7 +13,8 @@ import { ModalComponent } from './modal-component/modal.component';
 @NgModule({
   imports: [
     CommonModule,
-    MdButtonModule
+    MdButtonModule,
+    MdIconModule
   ],
   exports: [
     CoverComponent,

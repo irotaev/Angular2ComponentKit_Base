@@ -1,4 +1,7 @@
-import {Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {
+  Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {Canvas} from './Canva';
 import {Photo} from './Photo';
 import {AbstractComponent} from '../abstract.component';
@@ -14,6 +17,10 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
   public canvas: Canvas;
 
   private _lastInsertedPhotoIndex = 0;
+  private selectedPhoto: Photo;
+
+  @ViewChild('photoPreviewWrapper') photoPreviewWrapper: ElementRef;
+  public isShowPhotoPreview: boolean = false;
 
   @Input() imgLocation: string;
   @Input() imgNames: Array<string>;
@@ -65,12 +72,21 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
     return false;
   }
 
-  public imgClick() {
+  public imgClick(photo: Photo) {
+    this.isShowPhotoPreview = true;
+    this.selectedPhoto = photo;
+
     const modalFactory = this.cfResolver.resolveComponentFactory(ModalComponent);
     // let modalComponentRef = modalFactory.create(this.vcRef.injector);
     // modalComponentRef.changeDetectorRef.detectChanges();
 
-    var modalComponent = this.vcRef.createComponent(modalFactory, this.vcRef.length, null);
+    var modalComponent = this.vcRef.createComponent(
+        modalFactory,
+        this.vcRef.length,
+        undefined,
+        [
+            [this.photoPreviewWrapper.nativeElement]
+        ]);
     modalComponent.instance.selfComponent = modalComponent;
   }
 }

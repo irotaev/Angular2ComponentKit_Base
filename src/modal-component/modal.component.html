@@ -1,1 +1,7 @@
-<i class="material-icons md-24 icon-close" (click)="closeComponent()">close</i>
+<button md-icon-button class="button-close" (click)="closeComponent()">
+    <md-icon class="md-24" aria-label="Закрыть окно">close</md-icon>
+</button>
+
+<div class="content-wrapper">
+    <ng-content></ng-content>
+</div>
