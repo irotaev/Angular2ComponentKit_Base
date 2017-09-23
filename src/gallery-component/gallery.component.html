@@ -26,7 +26,7 @@
 </sck-wrapper>
 
 <div #photoPreviewWrapper class="photo-preview-wrapper" [hidden]="!isShowPhotoPreview">
-    <div class="photo-wrapper">
+    <div *ngIf="isShowPhotoPreview" class="photo-wrapper">
         <img class="selected-photo" src="/assets/{{imgLocation}}/{{selectedPhoto.src}}"/>
     </div>
 </div>

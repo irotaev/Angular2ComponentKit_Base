@@ -1,5 +1,5 @@
 import {
-  Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewChild,
+  Component, ComponentFactoryResolver, ElementRef, Input, OnInit, TemplateRef, ViewChild,
   ViewContainerRef
 } from '@angular/core';
 import {Canvas} from './Canva';
