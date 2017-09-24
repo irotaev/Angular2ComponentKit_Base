@@ -1,6 +1,6 @@
 {
   "name": "ng2_simply-component-kit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Additional Angular 2 (or higher) components. Static components like covers, paragraphs eth",
   "main": "index.js",
   "scripts": {
