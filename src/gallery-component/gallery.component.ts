@@ -24,7 +24,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
 
   @Input() imgLocationMin: string;
   @Input() imgLocationBig: string;
-  @Input() assetsLocation: string = 'assets';
+  @Input() assetsLocation: string = '/assets/';
   @Input() imgNames: Array<string>;
   @Input() buttonText: string = "Еще фотографии";
   @Input() buttonText_imgsEnd: string;
@@ -54,7 +54,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
 
       callback(photo);
     };
-    img.src = window.location.origin + '/' + this.assetsLocation + '/' + this.imgLocationMin + '/' + photo.src;
+    img.src = window.location.origin + this.assetsLocation + this.imgLocationMin + '/' + photo.src;
   }
 
   public moreBtnClick(event) {
