@@ -91,6 +91,9 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
             [this.photoPreviewWrapper.nativeElement]
         ]);
     modalComponent.changeDetectorRef.detectChanges();
+    modalComponent.instance.onComponentDestroy = () => {
+      this.isModalNeed.emit(false);
+    };
 
     modalComponent.instance.selfComponent = modalComponent;
   }

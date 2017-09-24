@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ComponentRef, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ComponentRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {AbstractComponent} from '../abstract.component';
 import {isNullOrUndefined} from "util";
 
@@ -10,6 +10,7 @@ import {isNullOrUndefined} from "util";
 export class ModalComponent extends AbstractComponent implements OnInit, AfterViewInit, OnDestroy {
   public selfComponent: ComponentRef<ModalComponent>;
 
+  @Input() onComponentDestroy: () => void;
   constructor() {
     super();
   }
@@ -19,9 +20,6 @@ export class ModalComponent extends AbstractComponent implements OnInit, AfterVi
   }
 
   ngAfterViewInit(): void {
-    // if (!isNullOrUndefined(document)) {
-    //   document.querySelector('body').style.overflow = 'hidden';
-    // }
   }
 
   public closeComponent() {
@@ -33,6 +31,6 @@ export class ModalComponent extends AbstractComponent implements OnInit, AfterVi
   }
 
   ngOnDestroy(): void {
-
+    this.onComponentDestroy();
   }
 }
