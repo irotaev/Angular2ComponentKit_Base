@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ComponentRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {AbstractComponent} from '../abstract.component';
-import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'sck-modal',
