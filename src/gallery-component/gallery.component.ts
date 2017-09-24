@@ -1,5 +1,5 @@
 import {
-  Component, ComponentFactoryResolver, ElementRef, Input, OnInit, TemplateRef, ViewChild,
+  Component, ComponentFactoryResolver, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild,
   ViewContainerRef
 } from '@angular/core';
 import {Canvas} from './Canva';
@@ -22,10 +22,12 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
   @ViewChild('photoPreviewWrapper') photoPreviewWrapper: ElementRef;
   public isShowPhotoPreview: boolean = false;
 
-  @Input() imgLocation: string;
+  @Input() imgLocationMin: string;
+  @Input() imgLocationBig: string;
   @Input() imgNames: Array<string>;
   @Input() buttonText: string = "Еще фотографии"
   @Input() buttonText_imgsEnd: string;
+  @Output() isModalNeed: EventEmitter<any> = new EventEmitter();
   constructor(private _elementRef: ElementRef, private vcRef: ViewContainerRef, private cfResolver: ComponentFactoryResolver) {
     super();
   }
@@ -51,7 +53,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
 
       callback(photo);
     };
-    img.src = window.location.origin + '/assets/' + this.imgLocation + '/' + photo.src;
+    img.src = window.location.origin + '/assets/' + this.imgLocationMin + '/' + photo.src;
   }
 
   public moreBtnClick(event) {
@@ -73,6 +75,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
   }
 
   public imgClick(photo: Photo) {
+    this.isModalNeed.emit(true);
     this.isShowPhotoPreview = true;
     this.selectedPhoto = photo;
 
@@ -87,6 +90,8 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
         [
             [this.photoPreviewWrapper.nativeElement]
         ]);
+    modalComponent.changeDetectorRef.detectChanges();
+
     modalComponent.instance.selfComponent = modalComponent;
   }
 }

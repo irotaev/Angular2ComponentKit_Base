@@ -9,7 +9,7 @@
              class="img-wrapper"
         >
 
-            <img src="/assets/{{imgLocation}}/{{photo.src}}"
+            <img src="/assets/{{imgLocationMin}}/{{photo.src}}"
                  [style.width.px]="photo.width - 10"
                  [style.height.px]="photo.height - 10"
             />
@@ -27,6 +27,6 @@
 
 <div #photoPreviewWrapper class="photo-preview-wrapper" [hidden]="!isShowPhotoPreview">
     <div *ngIf="isShowPhotoPreview" class="photo-wrapper">
-        <img class="selected-photo" src="/assets/{{imgLocation}}/{{selectedPhoto.src}}"/>
+        <img class="selected-photo" src="/assets/{{imgLocationBig}}/{{selectedPhoto.src}}"/>
     </div>
 </div>

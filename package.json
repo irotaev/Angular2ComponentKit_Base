@@ -1,5 +1,5 @@
 {
-  "name": "angular2componentkit_base",
+  "name": "ng2_simply-component-kit",
   "version": "1.0.0",
   "description": "Additional Angular 2 (or higher) components. Static components like covers, paragraphs eth",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/irotaev/Angular2Components_Static.git"
+    "url": "git+https://github.com/irotaev/Angular2_SimplyComponentKit.git"
   },
   "keywords": [
     "angular",
@@ -19,9 +19,9 @@
   "author": "simplylight",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/irotaev/Angular2Components_Static/issues"
+    "url": "https://github.com/irotaev/Angular2_SimplyComponentKit/issues"
   },
-  "homepage": "https://github.com/irotaev/Angular2Components_Static#readme",
+  "homepage": "https://github.com/irotaev/Angular2_SimplyComponentKit#readme",
   "dependencies": {
     "@angular/cdk": "^2.0.0-beta.11",
     "@angular/material": "^2.0.0-beta.11",

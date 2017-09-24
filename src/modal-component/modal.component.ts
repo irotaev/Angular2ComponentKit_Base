@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ComponentRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ComponentRef, OnDestroy, OnInit} from '@angular/core';
 import {AbstractComponent} from '../abstract.component';
 import {isNullOrUndefined} from "util";
 
@@ -7,8 +7,7 @@ import {isNullOrUndefined} from "util";
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent extends AbstractComponent implements OnInit, AfterViewInit{
-
+export class ModalComponent extends AbstractComponent implements OnInit, AfterViewInit, OnDestroy {
   public selfComponent: ComponentRef<ModalComponent>;
 
   constructor() {
@@ -20,16 +19,20 @@ export class ModalComponent extends AbstractComponent implements OnInit, AfterVi
   }
 
   ngAfterViewInit(): void {
-    if (!isNullOrUndefined(document)) {
-      document.querySelector('body').style.overflow = 'hidden';
-    }
+    // if (!isNullOrUndefined(document)) {
+    //   document.querySelector('body').style.overflow = 'hidden';
+    // }
   }
 
   public closeComponent() {
     this.selfComponent.destroy();
 
-    if (!isNullOrUndefined(document)) {
-      document.querySelector('body').style.overflow = 'auto';
-    }
+    // if (!isNullOrUndefined(document)) {
+    //   document.querySelector('body').style.overflow = 'auto';
+    // }
+  }
+
+  ngOnDestroy(): void {
+
   }
 }
