@@ -26,7 +26,5 @@
 </sck-wrapper>
 
 <div #photoPreviewWrapper class="photo-preview-wrapper" [hidden]="!isShowPhotoPreview">
-    <div *ngIf="isShowPhotoPreview" class="photo-wrapper">
-        <img class="selected-photo" src="{{assetsLocation}}{{imgLocationBig}}/{{selectedPhoto.src}}"/>
-    </div>
+    <sck-img *ngIf="isShowPhotoPreview" [src]="assetsLocation + imgLocationBig + '/' + selectedPhoto.src" [isScale]="'true'" class="photo-wrapper"></sck-img>
 </div>
