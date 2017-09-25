@@ -1,7 +1,7 @@
 @import "../simply-component-kit.settings";
 
 :host(sck-wrapper) {
-  display: block;
+  display: inline-block;
+  width: 100%;
   margin: $grid-row*2 $grid-column $grid-row;
-
 }
