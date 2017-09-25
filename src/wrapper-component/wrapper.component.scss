@@ -2,6 +2,6 @@
 
 :host(sck-wrapper) {
   display: block;
-  padding-top: $grid-row;
-  padding-bottom: $grid-row;
+  margin: $grid-row*2 $grid-column $grid-row;
+
 }

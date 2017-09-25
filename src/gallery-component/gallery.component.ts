@@ -1,5 +1,13 @@
 import {
-    Component, ComponentFactoryResolver, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild,
+    AfterViewInit,
+    Component,
+    ComponentFactoryResolver,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewChild,
     ViewContainerRef
 } from '@angular/core';
 import {Canvas} from './Canva';
@@ -13,7 +21,7 @@ import {isNullOrUndefined} from 'util';
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent extends AbstractComponent implements OnInit {
+export class GalleryComponent extends AbstractComponent implements OnInit, AfterViewInit {
 
     public canvas: Canvas;
 
@@ -22,6 +30,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
     private isPhotoEnded = false;
 
     @ViewChild('photoPreviewWrapper') photoPreviewWrapper: ElementRef;
+    @ViewChild('sck-wrapper') wrapperComponent: ElementRef;
     public isShowPhotoPreview = false;
 
     @Input() imgLocationMin: string;
@@ -38,7 +47,10 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.canvas = new Canvas(this._elementRef.nativeElement.querySelector('.wrapper').clientWidth);
+    }
+
+    ngAfterViewInit() {
+        this.canvas = new Canvas(this._elementRef.nativeElement.querySelector('sck-wrapper').clientWidth);
 
         this.imgNames.slice(0, 10).forEach((name) => {
             const photo = new Photo(0, 0, name);
