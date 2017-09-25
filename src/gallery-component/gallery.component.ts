@@ -6,6 +6,7 @@ import {Canvas} from './Canva';
 import {Photo} from './Photo';
 import {AbstractComponent} from '../abstract.component';
 import {ModalComponent} from '../modal-component/modal.component';
+import {isNullOrUndefined} from 'util';
 
 @Component({
     selector: 'sck-gallery',
@@ -18,6 +19,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
 
     private _lastInsertedPhotoIndex = 0;
     private selectedPhoto: Photo;
+    private isPhotoEnded = false;
 
     @ViewChild('photoPreviewWrapper') photoPreviewWrapper: ElementRef;
     public isShowPhotoPreview = false;
@@ -28,6 +30,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
     @Input() imgNames: Array<string>;
     @Input() buttonText = 'Еще фотографии';
     @Input() buttonText_imgsEnd: string;
+    @Input() buttonText_imgsEnd_Src: string;
     @Output() public isModalNeed: EventEmitter<any> = new EventEmitter();
 
     constructor(private _elementRef: ElementRef, private vcRef: ViewContainerRef, private cfResolver: ComponentFactoryResolver) {
@@ -59,8 +62,17 @@ export class GalleryComponent extends AbstractComponent implements OnInit {
     }
 
     public moreBtnClick() {
+        if (this.isPhotoEnded) {
+            if (!isNullOrUndefined(this.buttonText_imgsEnd_Src)) {
+                window.open(this.buttonText_imgsEnd_Src);
+            }
+
+            return false;
+        }
+
         if (this._lastInsertedPhotoIndex >= this.imgNames.length) {
             this.buttonText = this.buttonText_imgsEnd;
+            this.isPhotoEnded = true;
 
             return false;
         }

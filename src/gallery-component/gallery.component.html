@@ -9,10 +9,10 @@
              class="img-wrapper"
         >
 
-            <img src="{{assetsLocation}}{{imgLocationMin}}/{{photo.src}}"
-                 [style.width.px]="photo.width - 10"
-                 [style.height.px]="photo.height - 10"
-            />
+            <sck-img
+                 [src]="assetsLocation + imgLocationMin+ '/' + photo.src"
+                 [isScale]="false"
+            ></sck-img>
 
             <div class="zoom-wrapper" (click)="imgClick(photo)">
                 <md-icon class="zoom-icon md-48" aria-label="Закрыть окно">zoom_in</md-icon>
