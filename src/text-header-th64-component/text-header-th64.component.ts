@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'sck-text-header-th64',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextHeaderTh64Component implements OnInit {
 
+  @Input() textH2: string;
+  @Input() textH4: string;
+  @Input() description: string;
   constructor() { }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderTextComponent } from './text-header.component';
+import { HeaderTextComponent } from './text-header-th36.component';
 
 describe('HeaderTextComponent', () => {
   let component: HeaderTextComponent;

@@ -1,6 +1,7 @@
 import {Photo} from './Photo';
 
 import _ from 'lodash';
+import {forEach} from '@angular/router/src/utils/collection';
 
 export class Canvas {
     public baseColumnWidth = 300;
@@ -21,13 +22,21 @@ export class Canvas {
         this.insertPhoto(photo);
     }
 
-    private refresh() {
+    public refresh() {
         this._baseColumnCount = this.getColumnCount();
         this._columnGap = this.getColumnGap();
 
+        _.remove(this._lastRowHeights);
         for (let i = 0; i < this._baseColumnCount; i++) {
             this._lastRowHeights.push(0);
         }
+
+        const photos = this.photos.slice(0);
+        _.remove(this.photos);
+
+        photos.forEach((photo) => {
+            this.addPhoto(photo);
+        });
     }
 
     private getColumnCount(): number {

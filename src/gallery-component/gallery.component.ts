@@ -3,7 +3,7 @@ import {
     Component,
     ComponentFactoryResolver,
     ElementRef,
-    EventEmitter,
+    EventEmitter, HostListener,
     Input,
     OnInit,
     Output,
@@ -30,7 +30,7 @@ export class GalleryComponent extends AbstractComponent implements OnInit, After
     private isPhotoEnded = false;
 
     @ViewChild('photoPreviewWrapper') photoPreviewWrapper: ElementRef;
-    @ViewChild('sck-wrapper') wrapperComponent: ElementRef;
+    @ViewChild('galleryWrapper') galleryWrapper: ElementRef;
     public isShowPhotoPreview = false;
 
     @Input() imgLocationMin: string;
@@ -59,6 +59,22 @@ export class GalleryComponent extends AbstractComponent implements OnInit, After
             });
         });
         this._lastInsertedPhotoIndex = 9;
+
+        this.setResizeWrapperDetection();
+    }
+
+    private setResizeWrapperDetection() {
+        let wrapperWidth = this.galleryWrapper.nativeElement.clientWidth;
+
+        setInterval(() => {
+            if (wrapperWidth === this.galleryWrapper.nativeElement.clientWidth) {
+                return;
+            }
+
+            wrapperWidth = this.galleryWrapper.nativeElement.clientWidth;
+            this.canvas.width = wrapperWidth;
+            this.canvas.refresh();
+        }, 500);
     }
 
     private loadImg(photo: Photo, callback: (photo: Photo) => void) {

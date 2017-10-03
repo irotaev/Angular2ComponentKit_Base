@@ -3,5 +3,6 @@
 :host(sck-wrapper) {
   display: inline-block;
   width: 100%;
-  margin: $grid-row*2 $grid-column $grid-row;
+  padding: $grid-row*2 $grid-column $grid-row;
+  box-sizing: border-box;
 }

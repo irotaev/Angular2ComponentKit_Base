@@ -24,16 +24,18 @@ $grid-row: $grid-y*4;
 
 //#region Colors
 $colors: (
+        'white': hsl(0,100,100),
         'black': hsl(0,0,0),
-        'grey_normal': hsl(0,0,50),
-        'grey_light': hsl(0,0,90),
-        'grey_light2': hsl(0,0,98),
-        'white': hsl(0,100,100)
+        'primary-text': hsl(0,0,0),
+        //'grey_normal': hsl(0,0,50),
+        //'grey_light': hsl(0,0,90),
+        //'grey_light2': hsl(0,0,98),
 );
 //#endregion
 
 //#region Fonts
 $font-sizes: (
+ // size 2560px 1200px 960px 640px 480px 320px
   '13px': (13px, 13px, 12px, 12px, 10px, 10px)
 );
 
