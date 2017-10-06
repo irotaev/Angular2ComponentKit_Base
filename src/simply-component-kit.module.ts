@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {MdButtonModule, MdIconModule} from '@angular/material';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 
 import {CoverComponent} from './cover-component/cover.component';
 import {HeaderTextComponent} from './text-header-th36-component/text-header-th36.component';
@@ -17,8 +17,8 @@ import { TextHeaderTh64Component } from './text-header-th64-component/text-heade
     imports: [
         CommonModule,
         BrowserModule,
-        MdButtonModule,
-        MdIconModule
+        MatButtonModule,
+        MatIconModule
     ],
     exports: [
         CoverComponent,
