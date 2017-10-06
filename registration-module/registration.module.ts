@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlockComponent } from './block/block.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [BlockComponent]
+  exports: [
+    RegistrationFormComponent
+  ],
+  declarations: [RegistrationFormComponent]
 })
 export class RegistrationModule { }
