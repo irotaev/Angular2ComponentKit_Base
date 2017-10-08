@@ -1,0 +1,45 @@
+<div class="bg-wrapper" [style.background-image]="'url(' + backgroundImgUrl + ')'">
+
+    <md-card class="registration-wrapper">
+        <sck-mdcard-title>Регистрация</sck-mdcard-title>
+
+        <md-card-content>
+            <form onsubmit="return false;">
+                <md-form-field class="email">
+                    <input mdInput placeholder="Ваш Email" [formControl]="emailFormControl">
+                    <md-error *ngIf="emailFormControl.hasError('pattern')">
+                        Email указан не верно
+                    </md-error>
+                    <md-error *ngIf="emailFormControl.hasError('required')">
+                        Пожалуйста, введите Ваш Email
+                    </md-error>
+                </md-form-field>
+
+                <div class="password-group">
+                    <md-form-field class="password">
+                        <input mdInput placeholder="Ваш пароль" [formControl]="passwordFormControl">
+                        <md-error *ngIf="passwordFormControl.hasError('pattern')">
+                            Пароль указан не верно
+                        </md-error>
+                        <md-error *ngIf="passwordFormControl.hasError('required')">
+                            Пожалуйста, введите Ваш пароль
+                        </md-error>
+                    </md-form-field>
+
+                    <md-slide-toggle class="is-password-need-toggle"
+                                     [checked]="isPasswordFieldNeed"
+                                     (change)="onPasswordNeedToggleChange($event)"
+                    ></md-slide-toggle>
+                </div>
+            </form>
+        </md-card-content>
+
+        <md-card-actions>
+            <button md-button class="next-step"
+                    [disabled]="emailFormControl.hasError('pattern') || emailFormControl.hasError('required')">
+                Продолжить
+            </button>
+        </md-card-actions>
+    </md-card>
+
+</div>

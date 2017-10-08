@@ -1,0 +1,16 @@
+@import "../../framework.scss/simply-component-kit.settings";
+
+:host(sck-mdcard-title) {
+  @include init-block();
+
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: $grid-row;
+  padding: $grid-y $grid-column;
+
+  background: map_get(map_get($theme, background), status-bar);
+
+  .title {
+    @include mat-typography-level-to-styles($typography, subheading-2);
+  }
+}

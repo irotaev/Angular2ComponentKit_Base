@@ -1,0 +1,89 @@
+@function map_merge_distinct($map1, $map2) {
+$map: $map2;
+
+    @each $key in map_keys($map2) {
+        @if map_has_key($map1, $key) {
+            $map: map_remove($map, $key);
+        }
+    }
+
+$map1: map_merge($map1, $map);
+
+    @return $map1;
+}
+
+@mixin init-block() {
+    display: block;
+}
+
+//#region Fonts
+@mixin font-size($sizes, $self: false) {
+    $selector: '';
+    @if ($self == true) {
+        $selector: '&';
+    }
+    @else {
+        $selector: '.font-size_#{nth($sizes, 1)}';
+    }
+
+    #{$selector} {
+
+        $resolution: null;
+        @for $i from 1 through length($sizes) {
+            @if ($i == 1) {
+                $resolution: 2560px;
+            }
+            @if ($i == 2) {
+                $resolution: 1200px;
+            }
+            @if ($i == 3) {
+                $resolution: 980px;
+            }
+            @if ($i == 4) {
+                $resolution: 640px;
+            }
+            @if ($i == 5) {
+                $resolution: 480px;
+            }
+            @if ($i == 6) {
+                $resolution: 320px;
+            }
+
+            @media screen and (max-width: $resolution) {
+                font-size: nth($sizes, $i);
+            }
+        }
+    }
+}
+
+@mixin letter-spacing($spacing-name) {
+    .letter-spacing_#{$spacing-name} {
+        letter-spacing: map_get($letter-spacings, $spacing-name);
+    }
+}
+
+@mixin font-weight($weight-name) {
+    .font-weight_#{$weight-name} {
+        font-weight: map_get($font-weights, $weight-name);
+    }
+}
+
+@mixin font-color($color-name) {
+    .color_#{$color-name} {
+        color: map_get($colors, $color-name);
+    }
+}
+//#endregion
+
+@mixin background-color($color-name) {
+    .background-color_#{$color-name} {
+        background-color: map_get($colors, $color-name);
+    }
+}
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+    }
+}

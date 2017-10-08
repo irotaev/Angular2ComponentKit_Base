@@ -1,0 +1,46 @@
+@import "../../framework.scss/simply-component-kit.settings";
+
+:host(sck-registration-form) {
+  @include init-block;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+md-card.registration-wrapper {
+  position: relative;
+  min-height: $grid-row*5;
+  min-width: $grid-card-width;
+  max-width: $grid-card-width*1.5;
+
+  .email {
+    width: 100% ;
+  }
+
+  .password-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    @include clearfix;
+  }
+  .password {
+    float: left;
+  }
+  .is-password-need-toggle {
+    float: right;
+  }
+}
+
+button.next-step {
+  float: right;
+}
+

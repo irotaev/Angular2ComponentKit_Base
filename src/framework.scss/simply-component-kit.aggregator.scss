@@ -1,10 +1,12 @@
+@import "~reset-css/reset.css";
 @import "simply-component-kit.settings";
 @import "material-icons.settings";
+@import "material.theming";
 
-@import "wrapper-component/settings";
-@import "cover-component/settings";
-@import "text-header-th36-component/settings";
-@import "gallery-component/settings";
+@import "../wrapper-component/settings";
+@import "../cover-component/settings";
+@import "../text-header-th36-component/settings";
+@import "../gallery-component/settings";
 
 @each $color-key in map_keys($colors) {
   @include font-color($color-key);
