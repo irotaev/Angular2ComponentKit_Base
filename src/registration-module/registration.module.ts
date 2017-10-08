@@ -4,8 +4,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegistrationFormComponent} from './registration-form/registration-form.component';
 
-import {MatCardModule, MdInputModule, MdButtonModule, MatSlideToggleModule} from '@angular/material';
+import {MatCardModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatStepperModule} from '@angular/material';
 import {SimplyComponentKitModule} from '../simply-component-kit.module';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
     imports: [
@@ -14,10 +15,12 @@ import {SimplyComponentKitModule} from '../simply-component-kit.module';
         BrowserAnimationsModule,
         CommonModule,
         MatCardModule,
-        MdInputModule,
-        MdButtonModule,
+        MatInputModule,
+        MatButtonModule,
         SimplyComponentKitModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatStepperModule,
+        TextMaskModule
     ],
     exports: [
         RegistrationFormComponent

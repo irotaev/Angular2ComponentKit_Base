@@ -4,42 +4,149 @@
         <sck-mdcard-title>Регистрация</sck-mdcard-title>
 
         <md-card-content>
-            <form onsubmit="return false;">
-                <md-form-field class="email">
-                    <input mdInput placeholder="Ваш Email" [formControl]="emailFormControl">
-                    <md-error *ngIf="emailFormControl.hasError('pattern')">
-                        Email указан не верно
-                    </md-error>
-                    <md-error *ngIf="emailFormControl.hasError('required')">
-                        Пожалуйста, введите Ваш Email
-                    </md-error>
-                </md-form-field>
+            <md-horizontal-stepper [linear]="true">
 
-                <div class="password-group">
-                    <md-form-field class="password">
-                        <input mdInput placeholder="Ваш пароль" [formControl]="passwordFormControl">
-                        <md-error *ngIf="passwordFormControl.hasError('pattern')">
-                            Пароль указан не верно
-                        </md-error>
-                        <md-error *ngIf="passwordFormControl.hasError('required')">
-                            Пожалуйста, введите Ваш пароль
-                        </md-error>
-                    </md-form-field>
+                <md-step [stepControl]="registerFormGroup">
+                    <form onsubmit="return false;" [formGroup]="registerFormGroup">
+                        <ng-template mdStepLabel>Конт</ng-template>
 
-                    <md-slide-toggle class="is-password-need-toggle"
-                                     [checked]="isPasswordFieldNeed"
-                                     (change)="onPasswordNeedToggleChange($event)"
-                    ></md-slide-toggle>
-                </div>
-            </form>
+                        <md-form-field class="email">
+                            <input mdInput type="email" placeholder="Ваш Email" [formControl]="emailFormControl" #emailInput>
+                            <md-error *ngIf="emailFormControl.hasError('pattern')">
+                                Email указан не верно
+                            </md-error>
+                            <md-error *ngIf="emailFormControl.hasError('required')">
+                                Пожалуйста, введите Ваш Email
+                            </md-error>
+                        </md-form-field>
+
+                        <div class="password-group">
+                            <md-form-field class="password">
+                                <input mdInput placeholder="Ваш пароль" [formControl]="passwordFormControl" #passwordInput>
+                                <md-error *ngIf="passwordFormControl.hasError('pattern')">
+                                    Пароль указан не верно
+                                </md-error>
+                                <md-error *ngIf="passwordFormControl.hasError('required')">
+                                    Пожалуйста, введите Ваш пароль
+                                </md-error>
+                            </md-form-field>
+
+                            <md-slide-toggle class="is-password-need-toggle"
+                                             [checked]="isPasswordFieldNeed"
+                                             (change)="onPasswordNeedToggleChange($event)"
+                                             #passwordNeedToggle
+                            ></md-slide-toggle>
+                        </div>
+
+                        <md-form-field *ngIf="isPasswordConfirmationFieldNeed" class="password confirmation">
+                            <input mdInput placeholder="Подтверждение пароля" type="password" [formControl]="passwordConfirmationFormControl" #passwordConfirmationInput>
+                            <md-error *ngIf="passwordConfirmationFormControl.hasError('passwordNotMatch')">
+                                Пароли не совпадают
+                            </md-error>
+                            <md-error *ngIf="passwordConfirmationFormControl.hasError('required')">
+                                Пожалуйста, введите Ваш пароль
+                            </md-error>
+                        </md-form-field>
+                    </form>
+
+                    <div class="actions">
+                        <button md-button
+                                mdStepperNext
+                                class="next-step"
+                                (click)="onBtnToStepConfirmationClick()"
+                                [disabled]="emailFormControl.invalid || passwordFormControl.invalid || passwordConfirmationFormControl.invalid">
+                            Дальше
+                        </button>
+                    </div>
+                </md-step>
+
+                <md-step [stepControl]="confirmRegistrationFormGroup">
+                    <form [formGroup]="confirmRegistrationFormGroup">
+                        <ng-template mdStepLabel>Код</ng-template>
+
+                        <md-form-field class="confirmation-code">
+                            <input mdInput type="text" placeholder="Код подтверждения" [formControl]="confirmNumberFormControl" #confirmationCodeInput>
+                            <md-error *ngIf="confirmNumberFormControl.hasError('pattern')">
+                                Код указан не верно
+                            </md-error>
+                            <md-error *ngIf="confirmNumberFormControl.hasError('required')">
+                                Пожалуйста, введите полученный код
+                            </md-error>
+                        </md-form-field>
+                    </form>
+
+                    <div class="actions">
+                        <button md-button
+                                mdStepperPrevious
+                                (click)="onBtnToStepRegistrationClick()"
+                                class="previous-step"
+                        >
+                            Назад
+                        </button>
+
+                        <button md-button
+                                mdStepperNext
+                                class="next-step"
+                                (click)="onBtnToStepAdditionalInfoClick()"
+                                [disabled]="confirmNumberFormControl.invalid">
+                            Дальше
+                        </button>
+                    </div>
+                </md-step>
+
+                <md-step [stepControl]="additionalInformationFormGroup">
+                    <form [formGroup]="additionalInformationFormGroup">
+                        <ng-template mdStepLabel>Доп</ng-template>
+
+                        <md-form-field class="name">
+                            <input mdInput type="text" placeholder="Ваше имя" [formControl]="nameFormControl">
+                            <md-error *ngIf="nameFormControl.hasError('pattern')">
+                                Имя введено не верно
+                            </md-error>
+                        </md-form-field>
+
+                        <md-form-field class="phone">
+                            <span mdPrefix>+7 &nbsp;</span>
+                            <input mdInput
+                                   [textMask]="{mask: phoneInputMask}"
+                                   type="tel"
+                                   placeholder="Ваш телефон"
+                                   [formControl]="phoneFormControl">
+                            <md-error *ngIf="phoneFormControl.hasError('pattern')">
+                                Телефон задан не верно
+                            </md-error>
+                        </md-form-field>
+                    </form>
+
+                    <div class="actions">
+                        <button md-button
+                                mdStepperPrevious
+                                class="previous-step"
+                        >
+                            Назад
+                        </button>
+
+                        <button md-button
+                                class="next-step skip"
+                        >
+                            Пропустить
+                        </button>
+
+                        <button md-button
+                                class="next-step finish"
+                                [disabled]="additionalInformationFormGroup.invalid"
+                        >
+                            Закончить
+                        </button>
+                    </div>
+                </md-step>
+
+            </md-horizontal-stepper>
         </md-card-content>
 
-        <md-card-actions>
-            <button md-button class="next-step"
-                    [disabled]="emailFormControl.hasError('pattern') || emailFormControl.hasError('required')">
-                Продолжить
-            </button>
-        </md-card-actions>
+        <!--<md-card-actions>-->
+
+        <!--</md-card-actions>-->
     </md-card>
 
 </div>

@@ -10,6 +10,7 @@ $grid-card-width: $grid-column*13;
 
 @mixin grid-column($number: 1) {
   width: $grid-card-width*$number;
+  box-sizing: border-box;
 }
 //#endregion
 

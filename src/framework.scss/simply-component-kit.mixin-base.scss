@@ -84,6 +84,7 @@ $map1: map_merge($map1, $map);
 @mixin clearfix() {
     &::after {
         display: block;
+        content: "";
         clear: both;
     }
 }
